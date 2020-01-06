@@ -1,5 +1,6 @@
 package com.fares.youssef.learning.spring.caching.repository;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import com.fares.youssef.learning.spring.caching.model.Book;
@@ -8,6 +9,7 @@ import com.fares.youssef.learning.spring.caching.model.Book;
 public class SimpleBookRepositoryImpl implements BookRepository {
 
 	@Override
+	@Cacheable("books")
 	public Book getByIsbn(String isbn) {
 		simulateSlowService();
 		return new Book(isbn, "Some book");
